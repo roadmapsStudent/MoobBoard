@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./src/App.css">
+</head>
+<body>
+    <div id="wrapper">
+        <input type="number" id="counts" onblur="loadimages()" value="15"/>
+        <button id="seed" onclick="seed();">Seed</button><br/>
+        <div id="board">
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let images = [];
+
+    function loadimages() {
+        images = [];
+        for(let i=0;i<document.getElementById("counts").value;i++) {
+            images.push("https://picsum.photos/id/" + i + "/300/300");
+        }
+    }
+
+    window.onload = loadimages();
+
+    function seed() {
+        document.getElementById("board").innerHTML="";
+        for(i=0;i<images.length;i++) loadpictures(images[i], i);
+    }
+
+    function swap(direction, i) {
+        let temp = images[i];
+        images[i] = images[i+direction];
+        images[i+direction]= temp;
+        seed();
+    }
+    function loadpictures(url,i) {
+        const left = document.createElement('button');
+        left.innerHTML = "Left";
+        left.onclick = function(){if(i>0) swap(-1,i);};
+        left.className="left";
+        const right = document.createElement('button');
+        right.innerHTML = "Right";
+        right.onclick = function(){ if(i<images.length-1) swap(1,i);};
+        right.className="right";
+        const edit = document.createElement("div");
+        edit.className="edit";
+        edit.appendChild(left);
+        edit.appendChild(right);
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = "pict";
+        const picturewrapper = document.createElement('div');
+        picturewrapper.className = "picwrap";
+        picturewrapper.appendChild(img);
+        picturewrapper.appendChild(edit);
+        document.getElementById('board').appendChild(picturewrapper);
+    }
+</script>

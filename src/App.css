@@ -1,0 +1,51 @@
+div.edit {
+  display: inline;
+  position: relative;
+  width:300px;
+  bottom: 26px;
+}
+button.left{
+  position: relative;
+  width:50%;
+  left:0px;
+  border: solid 1px red;
+}
+
+button.right{
+  position: relative;
+  width:50%;
+  right:0px;
+  border: solid 1px red;
+}
+
+div.picwrap {
+  display: inline-block;
+  height: 300px;
+  width: 300px;
+  margin-left: 20px;
+  margin-top: 20px;
+
+}
+img.pic {
+  display: inline;
+}
+#wrapper {
+  width: 90%;
+  height: 90%;
+  display: inline-block;
+  position: absolute;
+  top:0px;
+  background-color: transparent;
+}
+#seed {
+  position: absolute;
+  right:10px;
+  border: solid 1px red;
+}
+
+#board {
+  width: 99%;
+  height: 99%;
+  display: inline-block;
+  background-color: transparent;
+}
